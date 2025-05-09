@@ -149,6 +149,22 @@ class TrainerClient:
 
         return self.__get_runtime_from_crd(runtime)  # type: ignore
 
+    def get_runtime_packages(self, runtime: types.Runtime):
+        import time
+
+        job_name = self.train(runtime=runtime)
+
+        for _ in range(100):
+            trainjob = self.get_job(name=job_name)
+            if trainjob.status == "Succeeded":
+                logs = self.get_job_logs(job_name)
+                print(logs["node-0"])
+                self.delete_job(name=job_name)
+                return
+
+            time.sleep(5)
+        raise Exception("Timeout to wait until TrainJob is complete")
+
     def train(
         self,
         runtime: types.Runtime = types.DEFAULT_RUNTIME,
