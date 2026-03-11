@@ -9,7 +9,7 @@ resources:
   - ../../base/crds
   - ../../base/manager
   - ../../base/rbac
-  - ../../base/webhook
+#  - ../../base/webhook
   - ../../third-party/jobset # Comment this line if JobSet is installed on the Kubernetes cluster.
 
 # Update the Kubeflow Trainer controller manager image tag.

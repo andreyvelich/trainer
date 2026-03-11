@@ -18,7 +18,7 @@ webhook:
 
 # Leader election configuration
 leaderElection:
-  leaderElect: true
+  leaderElect: false
   resourceName: trainer.kubeflow.org
   resourceNamespace: ""
   leaseDuration: 15s
@@ -34,7 +34,7 @@ controller:
 
 # Certificate management configuration
 certManagement:
-  enable: true
+  enable: false
   webhookServiceName: kubeflow-trainer-controller-manager
   webhookSecretName: kubeflow-trainer-webhook-cert
 
